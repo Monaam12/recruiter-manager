@@ -1,0 +1,37 @@
+<?php
+
+use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
+
+class CreateCurriculaTable extends Migration
+{
+    /**
+     * Run the migrations.
+     */
+    public function up()
+    {
+        Schema::create('curricula', function (Blueprint $table) {
+            $table->bigIncrements('id');
+            $table->string('first_name');
+            $table->string('last_name');
+            $table->string('job')->nullable();
+            $table->integer('age')->nullable();
+            $table->string('address');
+            $table->integer('phone');
+            $table->string('image')->default('default.png');
+            $table->string('driving')->nullable();
+            $table->string('about')->nullable();
+            $table->string('cv')->nullable();
+            $table->timestamps();
+        });
+    }
+
+    /**
+     * Reverse the migrations.
+     */
+    public function down()
+    {
+        Schema::dropIfExists('curricula');
+    }
+}
