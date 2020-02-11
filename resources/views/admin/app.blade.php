@@ -13,12 +13,19 @@
   <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
   <!-- Tempusdominus Bbootstrap 4 -->
   <link rel="stylesheet" href="{{asset('plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css')}}">
+  <!-- Select2 -->
+  <link rel="stylesheet" href="{{asset('plugins/select2/css/select2.min.css')}}">
+  <link rel="stylesheet" href="{{asset('plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css')}}">
+  <!-- Bootstrap4 Duallistbox -->
+  <link rel="stylesheet" href="{{asset('plugins/bootstrap4-duallistbox/bootstrap-duallistbox.min.css')}}">
   <!-- iCheck -->
   <link rel="stylesheet" href="{{asset('plugins/icheck-bootstrap/icheck-bootstrap.min.css')}}">
   <!-- JQVMap -->
   <link rel="stylesheet" href="{{asset('plugins/jqvmap/jqvmap.min.css')}}">
   <!-- Theme style -->
   <link rel="stylesheet" href="{{asset('dist/css/adminlte.min.css')}}">
+  <!-- DataTables -->
+  <link rel="stylesheet" href="{{asset('plugins/datatables-bs4/css/dataTables.bootstrap4.css')}}">
   <!-- overlayScrollbars -->
   <link rel="stylesheet" href="{{asset('plugins/overlayScrollbars/css/OverlayScrollbars.min.css')}}">
   <!-- Daterange picker -->
@@ -65,19 +72,19 @@
                 </a>
             </li>
           <li class="nav-item">
-            <a href="pages/widgets.html" class="nav-link">
+           <a href="{{route('admin.users.index')}}" class="nav-link">
               <i class="nav-icon fas fa-users"></i>
               <p>Users Management</p>
             </a>
           </li>
           <li class="nav-item">
-            <a href="pages/widgets.html" class="nav-link">
+            <a href="{{route('admin.roles.index')}}" class="nav-link">
               <i class="nav-icon fas fa-users"></i>
               <p>Role Management</p>
             </a>
           </li>
           <li class="nav-item">
-            <a href="pages/widgets.html" class="nav-link">
+            <a href="" class="nav-link">
               <i class="nav-icon fas fa-user"></i>
               <p>Profile</p>
             </a>
@@ -93,70 +100,7 @@
     <br>
 
     <!-- Main content -->
-    <section class="content">
-      <div class="container-fluid">
-        <!-- Small boxes (Stat box) -->
-        <div class="row">
-          <div class="col-lg-3 col-6">
-            <!-- small box -->
-            <div class="small-box bg-info">
-              <div class="inner">
-                <h3>150</h3>
-
-                <p>New Orders</p>
-              </div>
-              <div class="icon">
-                <i class="ion ion-bag"></i>
-              </div>
-            </div>
-          </div>
-          <!-- ./col -->
-          <div class="col-lg-3 col-6">
-            <!-- small box -->
-            <div class="small-box bg-success">
-              <div class="inner">
-                <h3>53<sup style="font-size: 20px">%</sup></h3>
-
-                <p>Bounce Rate</p>
-              </div>
-              <div class="icon">
-                <i class="ion ion-stats-bars"></i>
-              </div>
-            </div>
-          </div>
-          <!-- ./col -->
-          <div class="col-lg-3 col-6">
-            <!-- small box -->
-            <div class="small-box bg-warning">
-              <div class="inner">
-                <h3>44</h3>
-
-                <p>User Registrations</p>
-              </div>
-              <div class="icon">
-                <i class="ion ion-person-add"></i>
-              </div>
-            </div>
-          </div>
-          <!-- ./col -->
-          <div class="col-lg-3 col-6">
-            <!-- small box -->
-            <div class="small-box bg-danger">
-              <div class="inner">
-                <h3>65</h3>
-
-                <p>Unique Visitors</p>
-              </div>
-              <div class="icon">
-                <i class="ion ion-pie-graph"></i>
-              </div>
-            </div>
-          </div>
-          <!-- ./col -->
-        </div>
-        <!-- /.row -->
-      </div><!-- /.container-fluid -->
-    </section>
+   @yield('content')
     <!-- /.content -->
   </div>
 
@@ -179,6 +123,11 @@
 </script>
 <!-- Bootstrap 4 -->
 <script src="{{asset('plugins/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
+<!-- Bootstrap4 Duallistbox -->
+<script src="{{asset('plugins/bootstrap4-duallistbox/jquery.bootstrap-duallistbox.min.js')}}"></script>
+<!-- InputMask -->
+<script src="{{asset('plugins/moment/moment.min.js')}}"></script>
+<script src="{{asset('plugins/inputmask/min/jquery.inputmask.bundle.min.js')}}"></script>
 <!-- ChartJS -->
 <script src="{{asset('plugins/chart.js/Chart.min.js')}}"></script>
 <!-- Sparkline -->
@@ -203,5 +152,34 @@
 <script src="{{asset('dist/js/pages/dashboard.js')}}"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="{{asset('dist/js/demo.js')}}"></script>
+<script src="{{asset('dist/js/adminlte.min.js')}}"></script>
+
+<!-- DataTables -->
+<script src="{{asset('plugins/datatables/jquery.dataTables.js')}}"></script>
+<script src="{{asset('plugins/datatables-bs4/js/dataTables.bootstrap4.js')}}"></script>
+<!-- Select2 -->
+<script src="{{asset('plugins/select2/js/select2.full.min.js')}}"></script>
+<!-- bs-custom-file-input -->
+<script src="{{asset('plugins/bs-custom-file-input/bs-custom-file-input.min.js')}}"></script>
+
+
+<script>
+    $(function () {
+      $("#user").DataTable();
+      $('#role').DataTable();
+    })
+</script>
+<script>
+    $(function () {
+      //Initialize Select2 Elements
+      $('.select2').select2()
+
+    })
+  </script>
+  <script type="text/javascript">
+    $(document).ready(function () {
+      bsCustomFileInput.init();
+    });
+    </script>
 </body>
 </html>

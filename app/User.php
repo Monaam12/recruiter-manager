@@ -23,6 +23,6 @@ class User extends Authenticatable
 
     public function role()
     {
-        return $this->hasOne(Role::class);
+        return $this->belongsToMany(Role::class);
     }
 }

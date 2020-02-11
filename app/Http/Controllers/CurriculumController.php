@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Curriculum;
 use Illuminate\Http\Request;
+use Image;
 
 class CurriculumController extends Controller
 {
@@ -33,23 +34,15 @@ class CurriculumController extends Controller
          ]);
 
         if ($request->hasFile('image')) {
-            $imageName = time().'.'.$request->image->extension();
-            $request->image->move(public_path('images'), $imageName);
+            Image::make($request->image)->resize(300, null, function ($contraint) {
+                $contraint->aspectRatio();
+            })->save(public_path('/images'.$request->image->hashName()));
         }
 
         Curriculum::create($request->all());
 
         return redirect()->route('skills.index')
                         ->with('success', 'Profile created successfully.');
-    }
-
-    public function show($id)
-    {
-        $profile = Curriculum::findOrFail($id)->with([
-            'skills', 'Experience', 'projects', 'Trainings',
-        ]);
-
-        return view('site.Curriculum.show', compact('profile'));
     }
 
     public function edit(Curriculum $profile)

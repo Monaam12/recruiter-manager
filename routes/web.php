@@ -14,7 +14,7 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::resource('profile', 'CurriculumController');
+Route::resource('profile', 'CurriculumController')->except(['show']);
 
 Route::resource('skills', 'SkillsController')->except(['show', 'edit', 'update']);
 
