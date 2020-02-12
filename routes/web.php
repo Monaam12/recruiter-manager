@@ -4,11 +4,12 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::prefix('admin')->name('admin.')->group(function () {
-    Route::get('/', 'DashController@index');
-    Route::resource('/users', 'UserController', ['except' => ['create', 'store']]);
-    Route::resource('/roles', 'RoleController');
-});
+Route::prefix('admin')->name('admin.')
+    ->middleware(['auth', 'can:list-role'])->group(function () {
+        Route::get('/', 'DashController@index');
+        Route::resource('/users', 'UserController', ['except' => ['create', 'store']]);
+        Route::resource('/roles', 'RoleController');
+    });
 
 Auth::routes();
 

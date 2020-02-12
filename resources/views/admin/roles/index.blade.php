@@ -1,12 +1,17 @@
-@extends('admin.app')
+@extends('admin.dashboard.app')
 
 @section('content')
 <div class="card">
+    @can('create-role')
+        <a href="{{route('admin.roles.create')}}">
+            <button type="button" class="btn-sm btn-primary float-right"><i class="fa fa-plus-circle"></i> Create New Role</button>
+        </a>
+    @endcan
     <div class="card-header">
-        <h1 class="card-title">
+        <h4 class="card-title">
             <i class="nav-icon fas fa-users"></i>
              Role Management
-        </h1>
+        </h4>
       </div>
     <!-- /.card-header -->
     <div class="card-body">
@@ -54,3 +59,12 @@
     <!-- /.card-body -->
   </div>
 @endsection
+
+@push('scripts')
+<script>
+    $(function () {
+      $('#role').DataTable();
+    })
+</script>
+
+@endpush

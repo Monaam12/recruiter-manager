@@ -1,46 +1,49 @@
-@extends('admin.app')
+@extends('admin.dashboard.app')
 
 @section('content')
 <div class="col-md-10">
     <!-- general form elements -->
     <div class="card card-primary">
+        <a href="{{route('admin.roles.index')}}">
+            <button type="button" class="btn-sm btn-primary float-right"><i class="fa fa-reply"></i> Back</button>
+        </a>
       <div class="card-header">
-        <h3 class="card-title">Create Role</h3>
+        <h4 class="card-title">Create Role</h4>
       </div>
       <!-- /.card-header -->
       <!-- form start -->
-      <form action="{{route('admin.roles.store')}}" method="POST" role="form">
+      <form action="{{route('admin.roles.store')}}" method="POST">
         @csrf
+
         <div class="card-body">
             <div class="form-group">
                 <label for="role">Name</label>
-            <input type="text" name="role" class="form-control @error('role') is-invalid @enderror" id="role" placeholder="Enter Role">
-                @error('role')
-                    <span class="invalid-feedback" role="alert">
-                        <strong>{{ $message }}</strong>
-                    </span>
-                @enderror
+            <input type="text" name="name" class="form-control" id="role" placeholder="Enter Role">
+            </div>
+            <div class="card">
+                <div class="card-header">
+                  <h4 class="card-title">Permissions</h4>
+                </div>
+                <div class="card-body">
+                    <div class="form-group clearfix">
+                        @foreach ($permissions as $permission)
+                        <div class="form-check form-check-inline">
+                            <input name="permissions[]" class="form-check-input" type="checkbox" id="inlineCheckbox1" value="{{$permission->id}}">
+                            <label class="form-check-label" for="inlineCheckbox1">{{$permission->name}}</label>
+                        </div>
+                        @endforeach
+                    </div>
+                </div>
             </div>
 
             <div class="form-group">
-                <label>Permissions</label>
-                <div class="select2-purple">
-                  <select name="permissions[]" class="select2" multiple="multiple" data-placeholder="Select a Permission" data-dropdown-css-class="select2-purple" style="width: 100%;" >
-                    @foreach ($permissions as $permission)
-                        <option value="{{$permission->id}}">
-                            {{$permission->name}}
-                        </option>
-                    @endforeach
-                  </select>
+                <div class="card-footer">
+                    <button type="submit" class="btn btn-primary"><i class="fa fa-plus-circle"></i> Add Role</button>
                 </div>
-              </div>
-            <div class="form-group">
-            <div class="card-footer">
-               <button type="submit" class="btn btn-primary">Add</button>
-            </div>
             </div>
         </div>
       </form>
     </div>
 </div>
 @endsection
+

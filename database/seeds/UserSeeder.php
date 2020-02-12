@@ -23,6 +23,10 @@ class UserSeeder extends Seeder
         $permissions = Permission::pluck('id', 'id')->all();
         $role->permissions()->sync($permissions);
 
-        $admin->role()->sync([$role->id]);
+        $admin->roles()->sync([$role->id]);
+
+        for ($i = 0; $i < 10; ++$i) {
+            factory(App\User::class, 100)->create();
+        }
     }
 }

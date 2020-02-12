@@ -2,10 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Http\Request;
+
 class DashController extends Controller
 {
+
     public function index()
     {
-        return view('admin.dash');
+        return view('admin.dashboard.index');
     }
 }

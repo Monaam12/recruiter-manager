@@ -1,12 +1,12 @@
-@extends('admin.app')
+@extends('admin.dashboard.app')
 
 @section('content')
 <div class="card">
     <div class="card-header">
-        <h1 class="card-title">
+        <h4 class="card-title">
             <i class="nav-icon fas fa-users"></i>
              Users Management
-        </h1>
+        </h4>
       </div>
     <!-- /.card-header -->
     <div class="card-body">
@@ -26,18 +26,16 @@
             <td>{{$user->id}}</td>
                 <td>{{$user->name}}</td>
                 <td>{{$user->email}}</td>
-                <td>{{implode(',', $user->role()->pluck('name')->toArray())}}</td>
+                <td>{{implode(',', $user->roles()->pluck('name')->toArray())}}</td>
                 <td>
                    <a href="{{route('admin.users.edit',$user->id)}}">
-                    <i class="fas fa-edit"></i>
+                    <i class="fas fa-edit float-right"></i>
                   </a>
 
                 <form action="{{route('admin.users.destroy',$user->id)}}" method="post">
                     @csrf
                     @method('DELETE')
-                    <button class="float-right">
-                        <i class="fas fa-trash">
-                    </button>
+                    <button><i class="fas fa-trash float-right"></button>
                 </form>
                 </td>
             </tr>
@@ -57,3 +55,13 @@
     <!-- /.card-body -->
   </div>
 @endsection
+
+@push('scripts')
+<script>
+    $(function () {
+      $("#user").DataTable();
+    })
+</script>
+
+@endpush
+
