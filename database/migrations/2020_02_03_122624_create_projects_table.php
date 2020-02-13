@@ -17,7 +17,7 @@ class CreateProjectsTable extends Migration
             $table->foreign('curriculum_id')->references('id')
                   ->on('curricula')->onDelete('cascade');
             $table->string('name');
-            $table->string('description');
+            $table->text('description');
             $table->date('start');
             $table->date('end');
             $table->timestamps();

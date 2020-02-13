@@ -16,11 +16,10 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::resource('profile', 'CurriculumController')->except(['show']);
-
-Route::resource('skills', 'SkillsController')->except(['show', 'edit', 'update']);
-
-Route::resource('experience', 'ExperienceController')->except(['show', 'edit', 'update']);
-
-Route::resource('project', 'ProjectController')->except(['show', 'edit', 'update']);
-Route::resource('training', 'TrainingController')->except(['show', 'edit', 'update']);
+Route::middleware(['auth'])->group(function () {
+    Route::resource('profile', 'CurriculumController')->except(['show']);
+    Route::resource('skills', 'SkillsController')->except(['show', 'edit', 'update']);
+    Route::resource('experience', 'ExperienceController')->except(['show', 'edit', 'update']);
+    Route::resource('project', 'ProjectController')->except(['show', 'edit', 'update']);
+    Route::resource('training', 'TrainingController')->except(['show', 'edit', 'update']);
+});

@@ -25,6 +25,9 @@
 <!-- DataTables -->
 <script src="{{asset('js/jquery.dataTables.js')}}"></script>
 <script src="{{asset('js/dataTables.bootstrap4.js')}}"></script>
+<script src="{{asset('js/jquery.min.js')}}"></script>
+<!-- Bootstrap 4 -->
+<script src="{{asset('js/bootstrap.bundle.min.js')}}"></script>
 
 </body>
 

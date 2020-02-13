@@ -9,6 +9,11 @@ use Image;
 
 class CurriculumController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     public function index()
     {
         $profiles = Curriculum::with([
@@ -26,12 +31,13 @@ class CurriculumController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'first_name' => 'required|max:15',
-            'last_name' => 'required|max:15',
+            // 'first_name' => 'required|max:15',
+            // 'last_name' => 'required|max:15',
             'age' => 'required',
             'address' => 'min:4|max:30',
             'phone' => 'required',
             'image' => 'image|mimes:jpeg,png,jpg,gif,svg',
+            'about',
          ]);
 
         if ($request->hasFile('image')) {
@@ -56,8 +62,8 @@ class CurriculumController extends Controller
     public function update(Request $request, Curriculum $profile)
     {
         $request->validate([
-            'first_name' => 'required|max:15',
-            'last_name' => 'required|max:15',
+            // 'first_name' => 'required|max:15',
+            // 'last_name' => 'required|max:15',
             'age' => 'required',
             'address' => 'min:4|max:30',
             'phone' => 'required',

@@ -8,13 +8,13 @@ use Illuminate\Http\Request;
 
 class RoleController extends Controller
 {
-    // public function __construct()
-    // {
-    //     $this->middleware('can:list-role');
-    //     $this->middleware('can:create-role', ['only' => ['create', 'store']]);
-    //     $this->middleware('can:edit-role', ['only' => ['edit', 'update']]);
-    //     $this->middleware('can:delete-role', ['only' => ['destroy']]);
-    // }
+    public function __construct()
+    {
+        $this->middleware('can:list-role');
+        $this->middleware('can:create-role', ['only' => ['create', 'store']]);
+        $this->middleware('can:edit-role', ['only' => ['edit', 'update']]);
+        $this->middleware('can:delete-role', ['only' => ['destroy']]);
+    }
 
     public function index()
     {

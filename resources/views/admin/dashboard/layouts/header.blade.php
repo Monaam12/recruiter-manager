@@ -12,8 +12,8 @@
 
                         <div class="account-wrap">
                                 <div class="content">
-                                    {{-- <h4 class="js-acc-btn" href="#">{{Auth::user()->name}}</h4>
-                                    <span class="email">{{Auth::user()->email}}</span> --}}
+                                    <h4 class="js-acc-btn" href="#">{{Auth::user()->name}}</h4>
+                                    <span class="email">{{Auth::user()->email}}</span>
                                 </div>
                         </div>
                         <div class="ml-5">

@@ -16,7 +16,7 @@
               </div>
 
               <h3 class="profile-username text-center">
-                {{$profile->first_name}} {{$profile->last_name}}
+                {{implode(',',$profile->user()->pluck('name')->toArray())}}
               </h3>
 
               <p class="text-muted text-center">{{$profile->job}}</p>
@@ -106,18 +106,19 @@
                       <div class="timeline-item">
                         <h3 class="timeline-header">{{$experience->company}}</h3>
                         <h3 class="timeline-header">{{$experience->job}}</h3>
-                        <div class="timeline-body">{{$experience->description}}</div>
+                        <div class="timeline-body">{{$training->description}}</div>
                       </div>
                     </div>
 
                     <div class="time-label">
                       <span class="bg-success">
-                        {{$experience->start}}
+                        {{$training->start}}
                       </span>
                     </div>
                   </div>
                 </div>
             @endforeach
+
 
             @foreach ($profile->projects() as $project)
                 <div class="tab-pane" id="projects">

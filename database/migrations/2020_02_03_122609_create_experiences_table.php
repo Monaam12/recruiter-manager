@@ -18,7 +18,7 @@ class CreateExperiencesTable extends Migration
                   ->on('curricula')->onDelete('cascade');
             $table->string('company');
             $table->string('job');
-            $table->string('description');
+            $table->text('description');
             $table->date('start');
             $table->date('end');
             $table->timestamps();

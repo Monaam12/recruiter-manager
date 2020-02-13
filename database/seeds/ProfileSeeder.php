@@ -1,6 +1,10 @@
 <?php
 
 use App\Models\Curriculum;
+use App\Models\Experience;
+use App\Models\Project;
+use App\Models\Skills;
+use App\Models\Training;
 use Illuminate\Database\Seeder;
 
 class ProfileSeeder extends Seeder
@@ -10,8 +14,10 @@ class ProfileSeeder extends Seeder
      */
     public function run()
     {
-        factory(App\User::class, 100)->create();
-
-        factory(Curriculum::class, 40)->create();
+        factory(Curriculum::class, 200)->create();
+        factory(Experience::class, 200)->create();
+        factory(Project::class, 200)->create();
+        factory(Skills::class, 200)->create();
+        factory(Training::class, 200)->create();
     }
 }

@@ -18,9 +18,9 @@ class CreateTrainingsTable extends Migration
                   ->on('curricula')->onDelete('cascade');
             $table->string('name');
             $table->string('school');
+            $table->text('description');
             $table->date('start');
             $table->date('end');
-            $table->string('description');
             $table->timestamps();
         });
     }

@@ -9,12 +9,12 @@ use Illuminate\Support\Facades\Auth;
 
 class UserController extends Controller
 {
-    // public function __construct()
-    // {
-    //     $this->middleware('can:list-users');
-    //     $this->middleware('can:edit-users', ['only' => ['edit', 'update']]);
-    //     $this->middleware('can:delete-users', ['only' => ['destroy']]);
-    // }
+    public function __construct()
+    {
+        $this->middleware('can:list-users');
+        $this->middleware('can:edit-users', ['only' => ['edit', 'update']]);
+        $this->middleware('can:delete-users', ['only' => ['destroy']]);
+    }
 
     public function index()
     {
