@@ -24,9 +24,5 @@ class UserSeeder extends Seeder
         $role->permissions()->sync($permissions);
 
         $admin->roles()->sync([$role->id]);
-
-        for ($i = 0; $i < 10; ++$i) {
-            factory(App\User::class, 100)->create();
-        }
     }
 }

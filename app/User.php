@@ -2,6 +2,7 @@
 
 namespace App;
 
+use App\Models\Curriculum;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 
@@ -25,13 +26,14 @@ class User extends Authenticatable
     {
         return $this->belongsToMany(Role::class);
     }
-public function hasRole($role)
+
+    public function hasRole($role)
     {
         if (is_string($role)) {
             return $this->roles->contains('name', $role);
         }
 
-        return !!$role->intersect($this->roles)->count();
+        return (bool) $role->intersect($this->roles)->count();
     }
 
     public function assign($role)
@@ -43,5 +45,10 @@ public function hasRole($role)
         }
 
         return $this->roles()->save($role);
+    }
+
+    public function profile()
+    {
+        return $this->hasOne(Curriculum::class);
     }
 }

@@ -10,12 +10,8 @@ class ProfileSeeder extends Seeder
      */
     public function run()
     {
-        Curriculum::create([
-                'first_name' => 'admin',
-                'last_name' => 'admin',
-                'age' => '20',
-                'address' => 'street kalban',
-                'phone' => '72727427',
-        ]);
+        factory(App\User::class, 100)->create();
+
+        factory(Curriculum::class, 40)->create();
     }
 }

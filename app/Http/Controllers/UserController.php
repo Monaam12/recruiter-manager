@@ -3,8 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Role;
-use Illuminate\Http\Request;
 use App\User;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 class UserController extends Controller
@@ -21,15 +21,6 @@ class UserController extends Controller
         $users = User::where('id', '!=', Auth::id())->get();
 
         return view('admin.users.index', compact('users'));
-    }
-
-    public function show($id)
-    {
-        $user = User::findOrFail($id);
-
-        return view('admin.users.show')->with([
-            'user' => $user,
-        ]);
     }
 
     public function edit(User $user)

@@ -7,8 +7,9 @@ Route::get('/', function () {
 Route::prefix('admin')->name('admin.')
     ->middleware(['auth', 'can:list-role'])->group(function () {
         Route::get('/', 'DashController@index');
-        Route::resource('/users', 'UserController', ['except' => ['create', 'store']]);
+        Route::resource('/users', 'UserController')->except(['create', 'store', 'show']);
         Route::resource('/roles', 'RoleController');
+        Route::resource('/profile', 'ProfileUserController')->except(['create', 'store', 'edit', 'update', 'destroy']);
     });
 
 Auth::routes();

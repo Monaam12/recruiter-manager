@@ -34,6 +34,10 @@
                         <i class="fa fa-cogs"></i> ROLES MANAGEMENT</a>
                     </li>
 @endcan
+                    <li>
+                        <a href="{{route('admin.profile.index')}}">
+                        <i class="fa fa-user"></i>PROFILES MANAGEMENT</a>
+                    </li>
                 </ul>
             </div>
         </nav>

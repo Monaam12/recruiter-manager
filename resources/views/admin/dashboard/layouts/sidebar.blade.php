@@ -26,8 +26,8 @@
                     </li>
 @endcan
                     <li>
-                        <a href="#">
-                        <i class="fa fa-user"></i>ACCOUNT</a>
+                        <a href="{{route('admin.profile.index')}}">
+                        <i class="fa fa-user"></i>PROFILES MANAGEMENT</a>
                     </li>
                 </ul>
             </nav>

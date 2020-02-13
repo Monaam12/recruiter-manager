@@ -24,7 +24,9 @@
             @foreach ($users as $user)
             <tr>
             <td>{{$user->id}}</td>
-                <td>{{$user->name}}</td>
+                <td>
+            <a href="{{route('admin.profile.show',implode(',',$user->profile()->pluck('id')->toArray()))}}">{{$user->name}}</a>
+                </td>
                 <td>{{$user->email}}</td>
                 <td>{{implode(',', $user->roles()->pluck('name')->toArray())}}</td>
                 <td>
